@@ -1,0 +1,35 @@
+body {
+  margin: 40px;
+  text-align: center;
+}
+
+.time-machine {
+  &__wrapper {
+    width: 600px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: 100px 100px 100px 100px;
+    grid-auto-flow: column;
+  }
+
+  &__box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
+  &__box:hover {
+    background-color: rgb(114, 114, 114);
+  }
+
+  &__box:nth-child(even) {
+    background-color: #ccc;
+    color: #000;
+  }
+  &__box:nth-child(even):hover {
+    background-color: rgb(160, 156, 156);
+    color: #000;
+  }
+}
