@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import usePrevious from '../hooks/usePrevious';
+import useTimeMachine from '../hooks/useTimeMachine';
 
 import { colors } from '../config/constants';
 import '../styles/timeMachine.scss';
@@ -7,7 +7,7 @@ import '../styles/timeMachine.scss';
 const TimeMachine = (): JSX.Element => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [history, setHistory] = useState<number[]>([]);
-  const [prevValue, getPrevValue] = usePrevious({
+  const [prevValue, getPrevValue] = useTimeMachine({
     history,
     activeIndex,
   });

@@ -1,4 +1,4 @@
-const usePrevious = ({
+const useTimeMachine = ({
   history,
   activeIndex,
 }: {
@@ -9,4 +9,4 @@ const usePrevious = ({
   return [history[activeIndex - 1], getPreviousValue];
 };
 
-export default usePrevious;
+export default useTimeMachine;
