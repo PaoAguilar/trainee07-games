@@ -46,6 +46,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "operator-linebreak": "off",
     "no-unused-vars": "off",
+    "react/no-array-index-key": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_" }
