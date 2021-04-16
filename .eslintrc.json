@@ -31,9 +31,24 @@
         "allowExpressions": true
       }
     ],
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
     "no-undef": "off",
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
-    "arrow-body-style": ["error", "never"]
+    "arrow-body-style": ["error", "as-needed"],
+    "operator-linebreak": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ]
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -9,22 +11,19 @@ import usePrevious from '../hooks/usePrevious';
 import '../styles/timeMachine.scss';
 
 const TimeMachine = (): any => {
-  console.log('renderizando');
-
-  const [valueToChange, setValueToChange] = useState<number>(0);
+  const [indexToChange, setIndexToChange] = useState<number>(0);
   const [history, setHistory] = useState<number[]>([]);
   const [color, setColor] = useState<string[]>([]);
-  const [opacity, setOpaticy] = useState<number>(0.5);
-  const [length, getPrevValue] = usePrevious(history);
-  //   const prevValue = usePrevious(valueToChange);
-  console.log({ color });
-  console.log({ length });
+  const [prevValue, getPrevValue] = usePrevious({
+    history,
+    activeIndex: indexToChange,
+  });
 
   return (
     <div>
       <h1>
         Now:
-        {getPrevValue(valueToChange)}
+        {getPrevValue(indexToChange)}
       </h1>
       <div className="single-wapper">
         <div
@@ -34,7 +33,7 @@ const TimeMachine = (): any => {
       </div>
       <h1>
         Previuos:
-        {getPrevValue(valueToChange - 1)}
+        {prevValue}
       </h1>
       <div className="single-wapper">
         <div
@@ -45,63 +44,53 @@ const TimeMachine = (): any => {
       <br />
       <div className="time-machine__wrapper">
         {colors.map((value, index) => (
-          <div
-            style={{ backgroundColor: value, opacity }}
+          <button
+            style={{
+              backgroundColor: value,
+              opacity: getPrevValue(indexToChange) === index ? 1 : 0.2,
+              border:
+                getPrevValue(indexToChange) === index ? '1px solid red' : '',
+            }}
+            type="button"
+            disabled={
+              !(indexToChange === history.length - 1 || history.length === 0)
+            }
             className="time-machine__box"
             key={index}
             onClick={() => {
-              console.log('click');
-              console.log({ value });
-              history.push(index);
-              color.push(value);
-              console.log({ ...history });
-              setOpaticy(1);
-              setColor([...color]);
-              setHistory([...history]);
-              setValueToChange(history.length - 1);
+              setColor([...color, value]);
+              setHistory([...history, index]);
+              setIndexToChange(history.length);
             }}
           >
-            {/* {value} */}
-          </div>
+            {index}
+          </button>
         ))}
 
-        {/* <button
+        <button
           type="button"
-          onClick={() => setValueToChange(valueToChange + 1)}
+          disabled={
+            history.length === 0 || indexToChange === history.length - 1
+          }
+          onClick={() => setIndexToChange(indexToChange + 1)}
         >
           NEXT
-        </button> */}
+        </button>
 
-        {history.length === 0 ? (
-          <button disabled type="button">
-            NEXT
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setValueToChange(valueToChange + 1)}
-          >
-            NEXT
-          </button>
-        )}
-
-        {history[valueToChange] === undefined ? (
-          <button disabled type="button">
-            PREVIOUS
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setValueToChange(valueToChange - 1)}
-          >
-            PREVIOUS
-          </button>
-        )}
+        <button
+          type="button"
+          disabled={indexToChange === 0}
+          onClick={() => {
+            setIndexToChange(indexToChange - 1);
+          }}
+        >
+          PREVIOUS
+        </button>
 
         <button
           type="button"
           onClick={() => {
-            setValueToChange(length - 1);
+            setIndexToChange(history.length - 1);
             // setColor(color.length);
           }}
         >
