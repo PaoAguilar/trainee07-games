@@ -23,21 +23,6 @@ body {
     padding: 20px;
     border: none;
   }
-  &__box:hover {
-    background-color: rgb(114, 114, 114);
-  }
-
-  &__box:focus {
-    outline: none;
-  }
-  &__box:nth-child(even) {
-    // background-color: #ccc;
-    color: #000;
-  }
-  &__box:nth-child(even):hover {
-    background-color: rgb(160, 156, 156);
-    color: #000;
-  }
 }
 
 .single-wrapper {

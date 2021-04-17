@@ -1,0 +1,31 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  &__board {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+  }
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  &__board {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+  }
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border: 1px solid #999;
+  padding: 0;
+  font-size: 24px;
+  font-weight: bold;
+}

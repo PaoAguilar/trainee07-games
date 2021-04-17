@@ -14,6 +14,14 @@ const Home = (): any => {
       >
         Time Machine
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          history.push('/ticTacToe');
+        }}
+      >
+        Tic Tac Toe
+      </button>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import useTimeMachine from '../hooks/useTimeMachine';
+import useTimeMachine from '../../hooks/useTimeMachine';
 
-import { colors } from '../config/constants';
-import '../styles/timeMachine.scss';
+import { colors } from '../../config/constants';
+import '../../styles/timeMachine.scss';
 
 const TimeMachine = (): JSX.Element => {
   const [activeIndex, setActiveIndex] = useState<number>(0);

@@ -1,8 +1,9 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import TimeMachine from './components/TimeMachine';
-import Home from './components/Home';
+
+import TimeMachine from './components/pages/TimeMachine';
+import Home from './components/pages/Home';
+import TicTacToe from './components/pages/TicTacToe';
 
 function App(): JSX.Element {
   return (
@@ -13,6 +14,9 @@ function App(): JSX.Element {
         </Route>
         <Route exact path="/timeMachine">
           <TimeMachine />
+        </Route>
+        <Route exact path="/ticTacToe">
+          <TicTacToe />
         </Route>
       </Router>
     </div>
