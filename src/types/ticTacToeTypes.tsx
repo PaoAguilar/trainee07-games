@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
-export const createBoardState = () => Array<Value>(9).fill(null);
+export const createBoardState = Array<Value>(9).fill(null);
 export type Value = 'X' | 'O' | null;
 
 export type BoardState = Value[];

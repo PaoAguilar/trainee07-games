@@ -1,8 +1,8 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React, { useRef } from 'react';
 import { useTicTacToeState } from '../../hooks/useTicTacToeState';
 
 import Board from '../Board';
-import Log from '../Log';
 import '../../styles/ticTacToe.scss';
 
 const TicTacToe = (): JSX.Element => {
@@ -10,10 +10,14 @@ const TicTacToe = (): JSX.Element => {
     gameState,
     current,
     xIsNext,
-    jumpTo,
+    moveThroughSteps,
     winner,
     handleClick,
+    stepForButton,
   } = useTicTacToeState();
+
+  const step = useRef<number>(0);
+  // console.log(gameState.history);
 
   return (
     <div>
@@ -25,7 +29,49 @@ const TicTacToe = (): JSX.Element => {
           </div>
           <Board board={current} onClick={handleClick} />
         </div>
-        <Log />
+        <button
+          type="button"
+          disabled={stepForButton === 0}
+          onClick={() => moveThroughSteps(stepForButton - 1)}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          disabled={
+            gameState.history.length === 0 ||
+            stepForButton === gameState.history.length - 1
+          }
+          onClick={() => moveThroughSteps(stepForButton + 1)}
+        >
+          Next
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            const interval = setInterval(() => {
+              if (!(step.current === gameState.history.length)) {
+                moveThroughSteps(step.current);
+                step.current += 1;
+                // console.log(step.current);
+              } else {
+                clearInterval(interval);
+              }
+            }, 1500);
+
+            // console.log(gameState.history.length - 1);
+          }}
+        >
+          Replay
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
