@@ -54,13 +54,10 @@ const TicTacToe = (): JSX.Element => {
                 if (!(step.current === gameState.history.length)) {
                   moveThroughSteps(step.current);
                   step.current += 1;
-                  // console.log(step.current);
                 } else {
                   clearInterval(interval);
                 }
               }, 500);
-
-              // console.log(gameState.history.length - 1);
             }}
           >
             Replay

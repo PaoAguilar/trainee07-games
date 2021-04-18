@@ -4,24 +4,67 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
+  color: wheat;
+  font-size: 0.7rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tittle {
+  font-size: 3rem;
 }
 
 .time-machine {
+  display: flex;
+  &__indications {
+    margin-right: 3rem;
+    width: 25rem;
+    text-align: justify;
+    text-justify: inter-word;
+    // background: green;
+  }
+
   &__wrapper {
-    width: 600px;
+    width: 30rem;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(5, 100px);
+    grid-template-columns: repeat(4, 100px);
     grid-template-rows: 100px 100px 100px 100px;
     grid-auto-flow: column;
   }
 
   &__box {
-    // background-color: #444;
-    color: #fff;
+    color: black;
     border-radius: 5px;
     padding: 20px;
     border: none;
+    outline: none;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button-style {
+    width: 10rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid wheat;
+    border-radius: 0.12em;
+    text-decoration: none;
+    color: wheat;
+    background: transparent;
+    text-align: center;
+    transition: all 0.2s;
+    outline: none;
+  }
+  &__button-style:disabled {
+    background: gray;
+  }
+  &__button-style:hover {
+    font-size: large;
   }
 }
 

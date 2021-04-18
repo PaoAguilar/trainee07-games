@@ -14,74 +14,112 @@ const TimeMachine = (): JSX.Element => {
 
   return (
     <div>
-      <h1>
-        Now:
-        {getPrevValue(activeIndex)}
-      </h1>
-      <h1>
-        Previous:
-        {prevValue}
-      </h1>
       <br />
-      <div className="time-machine__wrapper">
-        {colors.map((value, index) => (
+      <h1 className="tittle">TIME MACHINE</h1>
+      <div className="time-machine">
+        <div className="time-machine__indications">
+          <h1>Indications:</h1>
+          <ol>
+            <li>
+              <h2>
+                You can click on the color you want, the time machine will keep
+                a track of the colors you clicked.
+              </h2>
+            </li>
+            <li>
+              <h2>
+                You can use the previous button, which allows you to focus on
+                the last selected color.
+              </h2>
+            </li>
+            <li>
+              <h2>
+                You can use the next button, which allows you to focus on the
+                next color you selected.
+              </h2>
+            </li>
+            <li>
+              <h2>
+                The Resume button will bring the user back to where it left.
+              </h2>
+            </li>
+          </ol>
+          <h1>Have fun...</h1>
+        </div>
+        <div className="time-machine__wrapper">
+          {colors.map((value, index) => (
+            <button
+              style={{
+                backgroundColor: value,
+                opacity: getPrevValue(activeIndex) === index ? 1 : 0.4,
+              }}
+              type="button"
+              disabled={
+                !(activeIndex === history.length - 1 || history.length === 0)
+              }
+              className="time-machine__box"
+              key={value}
+              onClick={() => {
+                setHistory([...history, index]);
+                setActiveIndex(history.length);
+              }}
+            >
+              {index}
+            </button>
+          ))}
+        </div>
+
+        <div className="time-machine__buttons">
           <button
-            style={{
-              backgroundColor: value,
-              opacity: getPrevValue(activeIndex) === index ? 1 : 0.2,
-              border:
-                getPrevValue(activeIndex) === index ? '1px solid red' : '',
-            }}
             type="button"
+            className="time-machine__button-style"
             disabled={
-              !(activeIndex === history.length - 1 || history.length === 0)
+              history.length === 0 || activeIndex === history.length - 1
             }
-            className="time-machine__box"
-            key={value}
+            onClick={() => setActiveIndex(activeIndex + 1)}
+          >
+            NEXT
+          </button>
+
+          <button
+            type="button"
+            className="time-machine__button-style"
+            disabled={activeIndex === 0}
             onClick={() => {
-              setHistory([...history, index]);
-              setActiveIndex(history.length);
+              setActiveIndex(activeIndex - 1);
             }}
           >
-            {index}
+            PREVIOUS
           </button>
-        ))}
 
-        <button
-          type="button"
-          disabled={history.length === 0 || activeIndex === history.length - 1}
-          onClick={() => setActiveIndex(activeIndex + 1)}
-        >
-          NEXT
-        </button>
-
-        <button
-          type="button"
-          disabled={activeIndex === 0}
-          onClick={() => {
-            setActiveIndex(activeIndex - 1);
-          }}
-        >
-          PREVIOUS
-        </button>
-
-        <button
-          type="button"
-          disabled={history.length === 0}
-          onClick={() => {
-            setActiveIndex(history.length - 1);
-          }}
-        >
-          RESUME
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          RESET
-        </button>
+          <button
+            type="button"
+            className="time-machine__button-style"
+            disabled={history.length === 0}
+            onClick={() => {
+              setActiveIndex(history.length - 1);
+            }}
+          >
+            RESUME
+          </button>
+          <button
+            type="button"
+            className="time-machine__button-style"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            RESET
+          </button>
+          <h1>
+            Now:
+            {getPrevValue(activeIndex)}
+          </h1>
+          <h1>
+            Previous:
+            {prevValue}
+          </h1>
+        </div>
       </div>
     </div>
   );
