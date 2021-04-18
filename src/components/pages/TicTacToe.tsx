@@ -46,24 +46,26 @@ const TicTacToe = (): JSX.Element => {
         >
           Next
         </button>
-        <button
-          type="button"
-          onClick={() => {
-            const interval = setInterval(() => {
-              if (!(step.current === gameState.history.length)) {
-                moveThroughSteps(step.current);
-                step.current += 1;
-                // console.log(step.current);
-              } else {
-                clearInterval(interval);
-              }
-            }, 1500);
+        {winner && (
+          <button
+            type="button"
+            onClick={() => {
+              const interval = setInterval(() => {
+                if (!(step.current === gameState.history.length)) {
+                  moveThroughSteps(step.current);
+                  step.current += 1;
+                  // console.log(step.current);
+                } else {
+                  clearInterval(interval);
+                }
+              }, 500);
 
-            // console.log(gameState.history.length - 1);
-          }}
-        >
-          Replay
-        </button>
+              // console.log(gameState.history.length - 1);
+            }}
+          >
+            Replay
+          </button>
+        )}
         <button
           type="button"
           onClick={() => {
