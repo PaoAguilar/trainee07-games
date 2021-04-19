@@ -8,10 +8,12 @@ import {
 } from '../types/ticTacToeTypes';
 
 export const useTicTacToeState = () => {
-  const [gameState, setGameState] = useState<GameState>({
+  const initialState = {
     history: [createBoardState],
     step: 0,
-  });
+  };
+
+  const [gameState, setGameState] = useState<GameState>(initialState);
 
   const current = gameState.history[gameState.step];
   const xIsNext = gameState.step % 2 === 0;
@@ -25,7 +27,7 @@ export const useTicTacToeState = () => {
       return;
     }
     const newBoardState = boardState.slice();
-    
+
     newBoardState[square] = gameState.step % 2 === 0 ? 'X' : 'O';
     history.push(newBoardState);
     setGameState({
@@ -43,6 +45,10 @@ export const useTicTacToeState = () => {
 
   const stepForButton = gameState.step;
 
+  const reset = () => {
+    setGameState(initialState);
+  };
+
   return {
     gameState,
     current,
@@ -50,6 +56,7 @@ export const useTicTacToeState = () => {
     winner,
     handleClick,
     moveThroughSteps,
+    reset,
     stepForButton,
   };
 };

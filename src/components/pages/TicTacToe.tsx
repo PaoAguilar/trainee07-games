@@ -20,6 +20,7 @@ const TicTacToe = (): JSX.Element => {
     winner,
     handleClick,
     stepForButton,
+    reset,
   } = useTicTacToeState();
 
   const step = useRef<number>(0);
@@ -135,9 +136,7 @@ const TicTacToe = (): JSX.Element => {
             <button
               type="button"
               className="tictactoe__button-style"
-              onClick={() => {
-                window.location.reload();
-              }}
+              onClick={reset}
             >
               RESTART
             </button>

@@ -138,7 +138,7 @@ const TimeMachine = (): JSX.Element => {
             type="button"
             className="time-machine__button-style"
             onClick={() => {
-              window.location.reload();
+              setHistory([]);
             }}
           >
             RESET
