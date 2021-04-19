@@ -1,7 +1,12 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import useTimeMachine from '../../hooks/useTimeMachine';
+import { useHistory } from 'react-router-dom';
 
 import { colors } from '../../config/constants';
+import useTimeMachine from '../../hooks/useTimeMachine';
+import TicTacToeImg from '../../images/tictactoe.png';
+import HomeImg from '../../images/home.png';
 import '../../styles/timeMachine.scss';
 
 const TimeMachine = (): JSX.Element => {
@@ -11,9 +16,36 @@ const TimeMachine = (): JSX.Element => {
     history,
     activeIndex,
   });
+  const historyPath = useHistory();
 
   return (
     <div>
+      <div className="move-through-games">
+        <div className="tooltip">
+          <div className="move-through-games__logos">
+            <img
+              src={HomeImg}
+              alt=""
+              onClick={() => {
+                historyPath.push('/');
+              }}
+            />
+          </div>
+          <span className="tooltiptext">Go to home</span>
+        </div>
+        <div className="tooltip">
+          <div className="move-through-games__logos">
+            <img
+              src={TicTacToeImg}
+              alt="tictactoc"
+              onClick={() => {
+                historyPath.push('/ticTacToe');
+              }}
+            />
+          </div>
+          <span className="tooltiptext">Go to Tic Tac Toe</span>
+        </div>
+      </div>
       <br />
       <h1 className="tittle">TIME MACHINE</h1>
       <div className="time-machine">

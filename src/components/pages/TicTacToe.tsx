@@ -1,8 +1,14 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useTicTacToeState } from '../../hooks/useTicTacToeState';
 
 import Board from '../Board';
+import TimeMachineImg from '../../images/timemachine.png';
+import HomeImg from '../../images/home.png';
+import '../../styles/timeMachine.scss';
 import '../../styles/ticTacToe.scss';
 
 const TicTacToe = (): JSX.Element => {
@@ -17,10 +23,35 @@ const TicTacToe = (): JSX.Element => {
   } = useTicTacToeState();
 
   const step = useRef<number>(0);
-  // console.log(gameState.history);
-
+  const historyPath = useHistory();
   return (
     <div>
+      <div className="move-through-games">
+        <div className="tooltip">
+          <div className="move-through-games__logos">
+            <img
+              src={HomeImg}
+              alt=""
+              onClick={() => {
+                historyPath.push('/');
+              }}
+            />
+          </div>
+          <span className="tooltiptext">Go to home</span>
+        </div>
+        <div className="tooltip">
+          <div className="move-through-games__logos">
+            <img
+              src={TimeMachineImg}
+              alt="tictactoc"
+              onClick={() => {
+                historyPath.push('/timeMachine');
+              }}
+            />
+          </div>
+          <span className="tooltiptext">Go to Time Machine</span>
+        </div>
+      </div>
       <h1 className="tittle">TIC TAC TOE</h1>
       <div className="tictactoe">
         <div className="tictactoe__indications">
