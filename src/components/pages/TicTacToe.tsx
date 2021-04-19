@@ -3,8 +3,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useTicTacToeState } from '../../hooks/useTicTacToeState';
 
+import { useTicTacToeState } from '../../hooks/useTicTacToeState';
 import Board from '../Board';
 import TimeMachineImg from '../../images/timemachine.png';
 import HomeImg from '../../images/home.png';

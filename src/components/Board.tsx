@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+
 import { BoardProps, SquareProps } from '../types/ticTacToeTypes';
 import Square from './Square';
 

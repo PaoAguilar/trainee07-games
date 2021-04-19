@@ -12,31 +12,20 @@ export const useTicTacToeState = () => {
     history: [createBoardState],
     step: 0,
   });
-    //   console.log(gameState.step);
 
   const current = gameState.history[gameState.step];
-  //   console.log({ current });
-
   const xIsNext = gameState.step % 2 === 0;
   const winner = calculateWinner(current);
 
   const handleClick = (square: number) => {
     const history = gameState.history.slice(0, gameState.step + 1);
-    // console.log({ history });
-    // console.log(`Cuantos elementos hay en el history ${history.length - 1}`);
-
     const boardState = history[history.length - 1];
-    // console.log({ boardState });
-    // console.log(boardState[1]);
-
-    // console.log({ square });
 
     if (calculateWinner(boardState) || boardState[square]) {
       return;
     }
     const newBoardState = boardState.slice();
-    // console.log({ newBoardState });
-
+    
     newBoardState[square] = gameState.step % 2 === 0 ? 'X' : 'O';
     history.push(newBoardState);
     setGameState({

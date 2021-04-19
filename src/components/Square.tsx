@@ -1,7 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import '../styles/ticTacToe.scss';
+
 import { SquareProps } from '../types/ticTacToeTypes';
+import '../styles/ticTacToe.scss';
 
 const Square = ({ value, onClick }: SquareProps): JSX.Element => {
   return (
