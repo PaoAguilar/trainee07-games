@@ -1,0 +1,23 @@
+.home {
+  display: flex;
+
+  &__select-game {
+    width: 15rem;
+    height: 15rem;
+    padding: 3rem 3rem 1rem 3rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    img:hover {
+      width: 110%;
+      height: 110%;
+      cursor: pointer;
+    }
+  }
+  h2:hover {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
