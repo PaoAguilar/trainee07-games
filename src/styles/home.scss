@@ -21,3 +21,13 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (max-width: 590px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+  .tittle {
+    font-size: 2rem;
+  }
+}
